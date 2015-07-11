@@ -35,6 +35,8 @@ public:
     }
     // Seqが終了した場合、trueを返す
     bool isValid() {return valid;}
+    // 現在のSEQIDを返す
+    int  getCurrentId() {return currentId;}
 private:
     std::vector<FUNC> funcs;
     int   currentId;
@@ -67,6 +69,8 @@ public:
     void setObj(CLS *obj) { this->obj = obj;}
     // Seqが終了した場合、trueを返す
     bool isValid() {return valid;}
+    // 現在のSEQIDを返す
+    int  getCurrentId() {return currentId;}
 private:
     std::vector<FUNC> funcs;
     int   currentId;
