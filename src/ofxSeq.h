@@ -37,6 +37,12 @@ public:
     bool isValid() {return valid;}
     // 現在のSEQIDを返す
     int  getCurrentId() {return currentId;}
+    // Seqの初期化
+    void init() {
+        funcs.clear();
+        currentId = 0;
+        valid = true;
+    }
 private:
     std::vector<FUNC> funcs;
     int   currentId;
@@ -71,6 +77,12 @@ public:
     bool isValid() {return valid;}
     // 現在のSEQIDを返す
     int  getCurrentId() {return currentId;}
+    // Seqの初期化
+    void init() {
+        funcs.clear();
+        currentId = 0;
+        valid = true;
+    }
 private:
     std::vector<FUNC> funcs;
     int   currentId;
