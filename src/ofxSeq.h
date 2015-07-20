@@ -18,10 +18,11 @@
 class ofxSeq {
 public:
     typedef bool (*FUNC)();
-    ofxSeq() : valid(true), currentId(0){}
+    ofxSeq() : valid(false), currentId(0){}
     // 関数の追加
     void addFunc(FUNC func) {
         funcs.push_back(func);
+        valid = true;
     }
     // 順次処理
     void update() {
@@ -33,7 +34,7 @@ public:
             currentId ++;
         }
     }
-    // Seqが終了した場合、trueを返す
+    // Seqが終了した場合、falseを返す
     bool isValid() {return valid;}
     // 現在のSEQIDを返す
     int  getCurrentId() {return currentId;}
@@ -41,7 +42,7 @@ public:
     void init() {
         funcs.clear();
         currentId = 0;
-        valid = true;
+        valid = false;
     }
 private:
     std::vector<FUNC> funcs;
@@ -55,11 +56,12 @@ template <typename CLS>
 class ofxClassSeq  {
 public:
     typedef bool (CLS::*FUNC)() ;
-    ofxClassSeq()  : valid(true), currentId(0), obj(NULL){
+    ofxClassSeq()  : valid(false), currentId(0), obj(NULL){
     }
     // 関数の追加
     void addFunc(FUNC func) {
         funcs.push_back(func);
+        valid = true;
     }
     // 順次処理
     void update() {
@@ -73,7 +75,7 @@ public:
     }
     // オブジェクトのセット
     void setObj(CLS *obj) { this->obj = obj;}
-    // Seqが終了した場合、trueを返す
+    // Seqが終了した場合、falseを返す
     bool isValid() {return valid;}
     // 現在のSEQIDを返す
     int  getCurrentId() {return currentId;}
@@ -81,7 +83,7 @@ public:
     void init() {
         funcs.clear();
         currentId = 0;
-        valid = true;
+        valid = false;
     }
 private:
     std::vector<FUNC> funcs;
